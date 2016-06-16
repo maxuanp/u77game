@@ -1,0 +1,144 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.toper{
+	width: 100%;
+	height: 20%;
+	background-color: blue;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.lefter{
+	width: 20%;
+	height: 80%;
+	background: lightblue;
+	position: absolute;
+	top: 20%;
+	left: 0px;
+}
+.menu1{
+	width: 100%;
+	background: red;
+	left: 0px;
+	position: relative;
+	text-align: center;
+}
+#x1{
+	width: 100%;
+	left: 0px;
+	position: relative;
+	text-align: right;
+}
+.menu2{
+	width: 100%;
+	background: blue;
+	left: 0px;
+	position: relative;
+	text-align: center;
+}
+#x2{
+	width: 100%;
+	left: 0px;
+	position: relative;
+	text-align: right;
+}
+.menu3{
+	width: 100%;
+	background: white;
+	left: 0px;
+	position: relative;
+	text-align: center;
+}
+#x3{
+	width: 100%;
+	left: 0px;
+	position: relative;
+	text-align: right;
+}
+.righter{
+	width: 80%;
+	left: 20%;
+	position: absolute;
+	top: 20%;
+}
+.game1{
+	width: 100%;
+	height: 20%;
+	top: 0px;
+	left: 0px;
+	position: relative;
+	background: gray;
+}
+.fm1{
+	left: 20px;
+/*	top: 20px;*/
+	width: 150px;
+	height:200px;
+	position: relative;
+	background-color: white;
+}
+.text1{
+	top: 0px;
+	left: 190px;
+	position: absolute;
+	text-align: left;
+}
+
+.main{
+	/*top: 20%;*/
+	width: 100%;
+	height: 100px;
+	position: relative;
+	background-color: yellow;
+}
+
+.zm1{
+	top: 10px;
+	left: 0px;
+	width: 100%;
+	position: relative;
+	background-color: indianred;
+}
+.xzts{
+	top: 0px;
+	left: 0px;
+/*	height: 20%;*/
+	width: 100%;
+	position: relative;
+	background-color: red;
+}
+.xztspic{
+	width: 60px;
+	height: 80px;
+	background-color: white;
+}
+.xztsjs{
+	margin: 10%;
+	left: 0px;
+	text-align: left;
+	background-color: lawngreen;
+}
+.xztsbuy{
+	top: 0px;
+	right: 0px;
+	width: 20%;
+	height: 100%;
+	position: absolute;
+	background-color: lightblue;
+	z-index: 1;
+}
+.xztsbuycount{
+	left: 0px;
+	width: 100%;
+	height: 50%;
+	position: relative;
+	background-color: lightpink;
+}
+.xzbtx{
+	text-align: center;
+	width: 100%;
+	position: relative;
+	background-color: azure;
+}
