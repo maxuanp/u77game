@@ -3,21 +3,23 @@ var jscount = 0;
 var fycount = 0;
 var mgcount = 0;
 var clickdmg = 1;
-var dmgsec=1;
+var dmgsec = 1;
 var lbpd1 = 0;
 var lbpd2 = 0;
 var lbpd3 = 0;
-var speedx=1;
+var speedx = 1;
+var s1;
+var s_j1;
 var storage = window.localStorage;
-$(document).ready(function(){
-	onStart();
-	//存档方法  状态更新
-setInterval("statsupdata()",500);
-setInterval("goldsec()",1000*speedx);
-})
-//初始化
+$(document).ready(function() {
+		onStart();
+		//存档方法  状态更新
+		setInterval("statsupdata()", 500);
+		setInterval("goldsec()", 1000 * speedx);
+	})
+	//初始化
 
-$(".game1").click(function(){
+$(".game1").click(function() {
 	click1();
 })
 
@@ -25,55 +27,48 @@ $(".game1").click(function(){
 
 //技术
 
-function jishu1(name,js,cost,clicksh,dmg,level)
-{
-this.name=name;
-this.js=js;
-this.cost=parseInt(cost);
-this.clicksh=parseInt(clicksh);
-this.dmg=parseInt(dmg);
-this.level=parseInt(level);
+function jishu1(name, js, cost, clicksh, dmg, level) {
+	this.name = name;
+	this.js = js;
+	this.cost = parseInt(cost);
+	this.clicksh = parseInt(clicksh);
+	this.dmg = parseInt(dmg);
+	this.level = parseInt(level);
 
 
 }
 
-function levelup(person){
-	person.level=parseInt(person.level)+parseInt(1);
-	gold=parseInt(gold)-parseInt(person.cost);
-	if(person.level==0){
-		jscount=pasrseInt(jscount)+parseInt(1);
+function levelup(person) {
+	person.level = parseInt(person.level) + parseInt(1);
+	gold = parseInt(gold) - parseInt(person.cost);
+	if (person.level == 0) {
+		jscount = pasrseInt(jscount) + parseInt(1);
+	} else if (person.level < 10) {
+		person.clicksh = parseInt(person.clicksh) + 1;
+		person.dmg = parseInt(person.dmg) + 1;
+	} else if (10 <= person.level < 25) {
+		person.clicksh = parseInt(person.clicksh) * parseInt(2);
+		person.dmg = parseInt(person.dmg) * parseInt(2);
+	} else if (25 <= person.level < 50) {
+		person.clicksh = parseInt(person.clicksh) * parseInt(5);
+		person.dmg = parseInt(person.dmg) * parseInt(5);
+	} else if (50 <= person.level < 75) {
+		person.clicksh = parseInt(person.clicksh) * parseInt(15);
+		person.dmg = parseInt(person.dmg) * parseInt(15);
+	} else if (75 <= person.level < 100) {
+		person.clicksh = parseInt(person.clicksh) * parseInt(30);
+		person.dmg = parseInt(person.dmg) * parseInt(30);
+	} else if (person.level == 100) {
+		person.clicksh = parseInt(person.clicksh) * parseInt(100);
+		person.dmg = parseInt(person.dmg) * parseInt(100);
 	}
-	else if(person.level<10){
-		person.clicksh=parseInt(person.clicksh)+1;
-		person.dmg=parseInt(person.dmg)+1;
-	}
-	else if(10<=person.level<25){
-		person.clicksh=parseInt(person.clicksh)*parseInt(2);
-		person.dmg=parseInt(person.dmg)*parseInt(2);
-	}
-	else if(25<=person.level<50){
-		person.clicksh=parseInt(person.clicksh)*parseInt(5);
-		person.dmg=parseInt(person.dmg)*parseInt(5);
-	}
-	else if(50<=person.level<75){
-		person.clicksh=parseInt(person.clicksh)*parseInt(15);
-		person.dmg=parseInt(person.dmg)*parseInt(15);
-	}
-	else if(75<=person.level<100){
-		person.clicksh=parseInt(person.clicksh)*parseInt(30);
-		person.dmg=parseInt(person.dmg)*parseInt(30);
-	}
-	else if(person.level==100){
-		person.clicksh=parseInt(person.clicksh)*parseInt(100);
-		person.dmg=parseInt(person.dmg)*parseInt(100);
-	}
-	person.cost*=parseInt(person.level)*parseFloat(1.2)
-	dmgsec=parseInt(dmgsec)+parseInt(person.dmg);
-clickdmg=parseInt(clickdmg)+parseInt(person.clicksh);
+	person.cost *= parseInt(person.level) * parseFloat(1.2)
+	dmgsec = parseInt(dmgsec) + parseInt(person.dmg);
+	clickdmg = parseInt(clickdmg) + parseInt(person.clicksh);
 }
 
 
-xuezui=new jishu1("血罪天赎","一名勤勤恳恳的汉化技术人员，技术一顶一",100,10,10,0);
+xuezui = new jishu1("血罪天赎", "一名勤勤恳恳的汉化技术人员，技术一顶一", 100, 10, 10, 0);
 
 
 
@@ -125,7 +120,7 @@ xuezui=new jishu1("血罪天赎","一名勤勤恳恳的汉化技术人员，技�
 
 
 //状态显示
-function statsupdata(){
+function statsupdata() {
 	$(".rmb").text(gold)
 	$(".jishucount").text(jscount)
 	$(".fanyicount").text(fycount)
@@ -134,8 +129,8 @@ function statsupdata(){
 }
 
 //每秒获得金钱
-function goldsec(){
-	gold=parseInt(gold)+parseInt(dmgsec);
+function goldsec() {
+	gold = parseInt(gold) + parseInt(dmgsec);
 }
 
 //列表点击效果
@@ -169,39 +164,67 @@ $(".lb3").click(function() {
 		lbpd3--;
 	}
 })
-
+$(".zm1").hide();
+$("#zm").click(function() {
+	$(".zm1").show();
+});
+$("#rs").click(function() {});
+$("#lock").click(function() {});
+$("#boughtkeji").click(function() {});
+$("#chushoukeji").click(function() {});
+$("#selectgame").click(function() {});
+$("#uploadgame").click(function() {});
 
 //savegame();
 //alert(gold)
 function onStart() {
 	if (storage.getItem("gold") != null) {
-		gold = storage.getItem("gold");
-		jscount = storage.getItem("jscount");
-		fycount = storage.getItem("fycount");
-		mgcount = storage.getItem("mgcount");
-		clickdmg = storage.getItem("clickdmg");
-		dmgsec = storage.getItem("dmgsec");
-		xuezui.clicksh = storage.getItem("xuezui.clicksh");
-		xuezui.cost = storage.getItem("xuezui.cost");
-		xuezui.dmg = storage.getItem("xuezui.dmg");
-		xuezui.level = storage.getItem("xuezui.level");
+		//		gold = storage.getItem("gold");
+		//		jscount = storage.getItem("jscount");
+		//		fycount = storage.getItem("fycount");
+		//		mgcount = storage.getItem("mgcount");
+		//		clickdmg = storage.getItem("clickdmg");
+		//		dmgsec = storage.getItem("dmgsec");
+		//		xuezui.clicksh = storage.getItem("xuezui.clicksh");
+		//		xuezui.cost = storage.getItem("xuezui.cost");
+		//		xuezui.dmg = storage.getItem("xuezui.dmg");
+		//		xuezui.level = storage.getItem("xuezui.level");
+		s1 = storage.getItem("stats");
+		s_j1 = storage.getItem("xuezui");
+		s1 = s1.split("|");
+		s_j1 = s_j1.split("|");
+		gold = s1[0];
+		jscount = s1[1];
+		fycount = s1[2];
+		mgcount = s1[3];
+		clickdmg = s1[4];
+		dmgsec = s1[5];
+
+		//技术人员
+		xuezui.clicksh = s_j1[0];
+		xuezui.cost = s_j1[1];
+		xuezui.dmg = s_j1[2];
+		xuezui.level = s_j1[3];
+
 	}
 }
 
 function savegame() {
 	//var strValue = document.getElementById("x1").value;
-	var strValue0 = gold
+	//	var strValue0 = gold
 	if (storage) {
-		storage.setItem("gold", gold);
-		storage.setItem("jscount", jscount);
-		storage.setItem("fycount", fycount);
-		storage.setItem("mgcount", mgcount);
-		storage.setItem("clickdmg", clickdmg);
-		storage.setItem("dmgsec", dmgsec);
-		storage.setItem("xuezui.clicksh", xuezui.clicksh);
-		storage.setItem("xuezui.cost", xuezui.cost);
-		storage.setItem("xuezui.dmg", xuezui.dmg);
-		storage.setItem("xuezui.level", xuezui.level);
+		//		storage.setItem("gold", gold);
+		//		storage.setItem("jscount", jscount);
+		//		storage.setItem("fycount", fycount);
+		//		storage.setItem("mgcount", mgcount);
+		//		storage.setItem("clickdmg", clickdmg);
+		//		storage.setItem("dmgsec", dmgsec);
+		//		storage.setItem("xuezui.clicksh", xuezui.clicksh);
+		//		storage.setItem("xuezui.cost", xuezui.cost);
+		//		storage.setItem("xuezui.dmg", xuezui.dmg);
+		//		storage.setItem("xuezui.level", xuezui.level);
+		storage.setItem("stats", gold + "|" + jscount + "|" + fycount + "|" + mgcount + "|" + clickdmg + "|" + dmgsec);
+		storage.setItem("xuezui", xuezui.clicksh + "|" + xuezui.cost + "|" + xuezui.dmg + "|" + xuezui.level);
 	} else {
 		alert("无法存档！");
 	}
@@ -211,27 +234,38 @@ function click1() {
 	gold = parseInt(gold) + parseInt(clickdmg);
 	savegame();
 	$(".rmb").text(gold)
-//	alert(gold);
+		//	alert(gold);
 }
 
 //购买
 
-function xzbuy(){
-	if(gold>xuezui.cost){
-	for(var i=0;i<parseInt($(".xztsbuycount").val());i++){
-		levelup(xuezui);
-	}
-	}
-	else {
+function buy(person,id) {
+//	var c=id;
+	var a=document.getElementById(id).value;
+//	alert(person.name+"|"+a);
+	var b=person.cost;
+	for (var i = 0; i < a; i++) {
+			b*= (parseInt(person.level)+i) * parseFloat(1.2);
+		}
+	if (gold > b) {
+		for (var i = 0; i < a; i++) {
+			levelup(person);
+		}
+	} else {
 		alert("您的金钱不足")
 	}
 }
-$(".xzbtx").click(function(){
-	xzbuy();
-})
 
 
-
-
-
-
+//function xzbuy() {
+//	if (gold > xuezui.cost) {
+//		for (var i = 0; i < parseInt($(".xztsbuycount").val()); i++) {
+//			levelup(xuezui);
+//		}
+//	} else {
+//		alert("您的金钱不足")
+//	}
+//}
+//$(".xzbtx").click(function() {
+//	xzbuy();
+//})

@@ -13,31 +13,31 @@
 			<div class="person menu1">
 				<p class="lb1">人事管理</p>
 				<div class="person zhaomu" id="x1">
-					<p class="person ds1">招募</p>
+					<p class="person ds1" id="zm">招募</p>
 				</div>
 				<div class="person liebiao" id="x1">
-					<p class="person ds1">人事列表</p>
+					<p class="person ds1" id="rs">人事列表</p>
 				</div>
 			</div>
 			<div class="keji menu2">
 				<p class="lb2">科技</p>
 				<div class="keji jiesuo" id="x2">
-					<p class="keji ds2">解锁科技</p>
+					<p class="keji ds2" id="lock">解锁科技</p>
 				</div>
 				<div class="keji goumai" id="x2">
-					<p class="keji ds2">购买科技</p>
+					<p class="keji ds2" id="boughtkeji">购买科技</p>
 				</div>
 				<div class="keji chushou" id="x2">
-					<p class="keji ds2">出售科技</p>
+					<p class="keji ds2" id="chushoukeji">出售科技</p>
 				</div>
 			</div>
 			<div class="zuopin menu3">
 				<p class="lb3">汉化</p>
 				<div class="zuopin xuanze" id="x3">
-					<p class="zuopin ds3">选择游戏</p>
+					<p class="zuopin ds3" id="selectgame">选择游戏</p>
 				</div>
 				<div class="zuopin shangchuan" id="x3">
-					<p class="zuopin ds3">上传游戏</p>
+					<p class="zuopin ds3" id="uploadgame">上传游戏</p>
 				</div>
 			</div>
 		</div>
@@ -64,8 +64,8 @@
 								
 							</div>
 							<div class="xztsbuy">
-							<input type="number"  class="xztsbuycount" value="1" />
-							<button class="xzbtx">购买</button>
+							<input type="number" id="xzc"  class="xztsbuycount" value="1" />
+							<button class="xzbtx" onclick="buy(xuezui,'xzc')">购买</button>
 						</div>
 						</div>
 						
